@@ -1,0 +1,17 @@
+---
+import { work } from "../data/work";
+---
+<div class="work-grid">
+  {work.map((b) => (
+    <a href={`/work/${b.slug}`} class={`work-card ${b.variant}`} data-cursor="view" data-hover>
+      <div class="work-visual">
+        <div class={`wv-art ${b.art}`} style={`view-transition-name: case-${b.slug}`}><span>{b.mono}</span></div>
+      </div>
+      <div class="work-caption">
+        <h3>{b.name}</h3>
+        <p>{b.desc}</p>
+        <span>{b.tag}</span>
+      </div>
+    </a>
+  ))}
+</div>

@@ -1,0 +1,28 @@
+---
+import Base from "../layouts/Base.astro";
+import PageShell from "../components/PageShell.astro";
+import BuildPlanner from "../components/lab/BuildPlanner.astro";
+---
+<Base
+  title="The Lab — Outbuild Lab"
+  description="Try the studio's method live. Describe your product idea and Outbuild Lab's AI sketches a build plan — scope, stack, timeline and risks — in seconds."
+>
+  <PageShell
+    label="The Lab"
+    title={["Napkin to", '<em class="stroke">build plan</em>']}
+    lede="The fastest way to see how we think. Describe a product in a sentence and our AI sketches a real build plan — scope, stack, day-by-day timeline and the risks we'd pressure-test. It's the first hour of an engagement, in twenty seconds."
+  >
+    <BuildPlanner />
+
+    <div class="lab-note reveal">
+      <h4>What this is — and isn't</h4>
+      <p>
+        This is a live demo of the <strong>Generate</strong> step in our
+        Brief&nbsp;→&nbsp;Generate&nbsp;→&nbsp;Direct&nbsp;→&nbsp;Ship process. The
+        machine is fast and surprisingly sharp — but the value is in the
+        <em>Direct</em>: a senior team turning a plausible plan into the
+        <em>right</em> one. That part still takes humans. It takes us.
+      </p>
+    </div>
+  </PageShell>
+</Base>

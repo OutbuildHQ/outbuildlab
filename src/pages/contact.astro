@@ -1,0 +1,32 @@
+---
+import Base from "../layouts/Base.astro";
+import PageShell from "../components/PageShell.astro";
+import ProjectForm from "../components/ProjectForm.astro";
+---
+<Base title="Contact — Outbuild Lab" description="Tell us what you're building. Outbuild Lab replies within 24 hours — usually faster.">
+  <PageShell
+    label="Contact"
+    title={["Let's", '<em class="stroke">build</em>']}
+    lede="Tell us what you're building — the product, the problem, the deadline. We reply within 24 hours, and we can usually show you something before the week is out."
+  >
+    <div class="contact-grid">
+      <div class="reveal">
+        <ProjectForm />
+      </div>
+      <aside class="contact-aside reveal">
+        <div>
+          <h3>Email</h3>
+          <a href="mailto:hello@outbuildlab.com" data-hover>hello@outbuildlab.com</a>
+        </div>
+        <div>
+          <h3>Base</h3>
+          <p>Lagos, Nigeria — working worldwide. Full EU overlap, generous US overlap.</p>
+        </div>
+        <div>
+          <h3>Founding partners</h3>
+          <p>Three slots for Q3 2026. <a href="/founding" data-hover style="color: var(--accent);">Read the program →</a></p>
+        </div>
+      </aside>
+    </div>
+  </PageShell>
+</Base>

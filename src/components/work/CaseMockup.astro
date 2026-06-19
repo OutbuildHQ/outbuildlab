@@ -1,0 +1,228 @@
+---
+/* CSS-built product mockups — the "demos" for each case study.
+   One frame system; three bespoke screens per product, keyed by
+   (slug, screen). Screen 1 is the signature shot; 2 & 3 fill the
+   showcase gallery. */
+interface Props {
+  slug: string;
+  accent: string;
+  screen?: number;
+}
+const { slug, accent, screen = 1 } = Astro.props;
+const k = `${slug}-${screen}`;
+---
+<div class="mock" style={`--mk:${accent}`} data-slug={slug} data-screen={screen}>
+  {/* ===================== HELIO ===================== */}
+  {k === "helio-1" && (
+    <div class="mock-browser">
+      <div class="mock-bar"><i></i><i></i><i></i><span class="mock-url">app.helio.money</span></div>
+      <div class="mock-screen mk-helio">
+        <div class="mk-top">
+          <div>
+            <span class="mk-eyebrow">Total balance</span>
+            <span class="mk-balance">$12,480<small>.50</small></span>
+            <span class="mk-safe">● Safe to spend · $3,210</span>
+          </div>
+          <span class="mk-send">Send ↗</span>
+        </div>
+        <div class="mk-chart" aria-hidden="true">
+          {[42, 58, 36, 71, 49, 64, 80, 55, 68, 90, 47, 62].map((h) => (<span style={`height:${h}%`}></span>))}
+        </div>
+        <div class="mk-rows">
+          {[["◈", "Northvane", "Shopping", "−$84.00"], ["↺", "Payroll", "Income", "+$3,500"], ["☕", "Daily Grind", "Food", "−$4.80"]].map(([ic, name, cat, amt]) => (
+            <div class="mk-row">
+              <span class="mk-ic">{ic}</span>
+              <span class="mk-name">{name}<small>{cat}</small></span>
+              <span class={`mk-amt ${String(amt).startsWith("+") ? "pos" : ""}`}>{amt}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  )}
+  {k === "helio-2" && (
+    <div class="mock-browser">
+      <div class="mock-bar"><i></i><i></i><i></i><span class="mock-url">app.helio.money / send</span></div>
+      <div class="mock-screen mk-helio mk-send2">
+        <span class="mk-eyebrow">Send money</span>
+        <div class="mk-recip"><span class="mk-av">AO</span><span class="mk-name">Ada Okafor<small>helio · @ada</small></span><span class="mk-check">✓</span></div>
+        <div class="mk-amount">$250<small>.00</small></div>
+        <div class="mk-quick">{["$50", "$100", "$250", "Max"].map((q) => (<span class={q === "$250" ? "on" : ""}>{q}</span>))}</div>
+        <span class="mk-send mk-send-full">Slide to send →</span>
+      </div>
+    </div>
+  )}
+  {k === "helio-3" && (
+    <div class="mock-browser">
+      <div class="mock-bar"><i></i><i></i><i></i><span class="mock-url">app.helio.money / insights</span></div>
+      <div class="mock-screen mk-helio mk-ins">
+        <span class="mk-eyebrow">This month · spending</span>
+        <div class="mk-ins-top">
+          <div class="mk-donut" aria-hidden="true"><span>$2.1k</span></div>
+          <div class="mk-legend">
+            {[["Shopping", "38%"], ["Food", "24%"], ["Transport", "18%"], ["Other", "20%"]].map(([n, p], i) => (
+              <div><i class={`d${i + 1}`}></i>{n}<b>{p}</b></div>
+            ))}
+          </div>
+        </div>
+        <div class="mk-bars">
+          {[["Shopping", 80], ["Food", 52], ["Transport", 38]].map(([n, w]) => (
+            <div class="mk-barrow"><span>{n}</span><i><b style={`width:${w}%`}></b></i></div>
+          ))}
+        </div>
+      </div>
+    </div>
+  )}
+
+  {/* ===================== NORTHVANE ===================== */}
+  {k === "northvane-1" && (
+    <div class="mock-browser">
+      <div class="mock-bar"><i></i><i></i><i></i><span class="mock-url">northvane.store</span></div>
+      <div class="mock-screen mk-north">
+        <div class="mk-nav"><span class="mk-logo">NORTHVANE</span><span class="mk-cart">Cart · 2</span></div>
+        <div class="mk-hero">
+          <div class="mk-hero-copy">
+            <span class="mk-eyebrow">New — Vol. 03</span>
+            <h4>The Field Jacket</h4>
+            <p>Waxed cotton. Built for weather and years.</p>
+            <span class="mk-buy">Add to cart — $240</span>
+          </div>
+          <div class="mk-hero-art" aria-hidden="true"></div>
+        </div>
+        <div class="mk-prod">
+          {["Tote", "Cap", "Knit"].map((p, i) => (
+            <div class="mk-card"><span class={`mk-thumb t${i + 1}`} aria-hidden="true"></span><span class="mk-pname">{p}<small>${[60, 35, 120][i]}</small></span></div>
+          ))}
+        </div>
+      </div>
+    </div>
+  )}
+  {k === "northvane-2" && (
+    <div class="mock-browser">
+      <div class="mock-bar"><i></i><i></i><i></i><span class="mock-url">northvane.store / field-jacket</span></div>
+      <div class="mock-screen mk-north mk-pdp">
+        <div class="mk-pdp-art" aria-hidden="true"></div>
+        <div class="mk-pdp-info">
+          <span class="mk-eyebrow">Outerwear</span>
+          <h4>The Field Jacket</h4>
+          <span class="mk-price">$240</span>
+          <div class="mk-sizes">{["S", "M", "L", "XL"].map((s) => (<span class={s === "M" ? "on" : ""}>{s}</span>))}</div>
+          <span class="mk-buy mk-buy-full">Add to cart</span>
+          <span class="mk-thumbs" aria-hidden="true"><i></i><i></i><i></i></span>
+        </div>
+      </div>
+    </div>
+  )}
+  {k === "northvane-3" && (
+    <div class="mock-browser">
+      <div class="mock-bar"><i></i><i></i><i></i><span class="mock-url">northvane.store / checkout</span></div>
+      <div class="mock-screen mk-north mk-co">
+        <span class="mk-eyebrow">Checkout · 2 items</span>
+        <div class="mk-co-lines">
+          {[["Field Jacket", "$240"], ["Wool Knit", "$120"]].map(([n, p]) => (
+            <div class="mk-co-line"><i class="mk-co-thumb"></i><span>{n}</span><b>{p}</b></div>
+          ))}
+        </div>
+        <div class="mk-co-total"><span>Total</span><b>$360.00</b></div>
+        <span class="mk-buy mk-pay"> Pay</span>
+        <span class="mk-co-card">•••• 4242 · Visa</span>
+      </div>
+    </div>
+  )}
+
+  {/* ===================== PULSEROOM ===================== */}
+  {k === "pulseroom-1" && (
+    <div class="mock-phone">
+      <span class="mock-notch" aria-hidden="true"></span>
+      <div class="mock-screen mk-pulse">
+        <div class="mk-phead">
+          <span class="mk-eyebrow">Good morning, Ada</span>
+          <div class="mk-ring" aria-hidden="true"><span>82</span><small>readiness</small></div>
+        </div>
+        <div class="mk-chat">
+          <div class="mk-bub ai">How did you sleep? Tap or just talk to me.</div>
+          <div class="mk-bub me">Restless. Woke up a few times.</div>
+          <div class="mk-bub ai">Noted — that's 3 nights this week. Your data says caffeine after 4pm is the pattern. Want a wind-down plan for tonight?<span class="mk-tag">grounded in your logs</span></div>
+        </div>
+        <div class="mk-plan"><span>Today's plan</span><i>Hydrate · 10-min walk · No caffeine after 4pm</i></div>
+      </div>
+    </div>
+  )}
+  {k === "pulseroom-2" && (
+    <div class="mock-phone">
+      <span class="mock-notch" aria-hidden="true"></span>
+      <div class="mock-screen mk-pulse mk-vit">
+        <span class="mk-eyebrow">Today · vitals</span>
+        <div class="mk-vit-grid">
+          {[["Sleep", "6h 40m"], ["HRV", "48 ms"], ["Steps", "8,210"], ["Resting HR", "61 bpm"]].map(([n, v]) => (
+            <div class="mk-tile"><small>{n}</small><b>{v}</b></div>
+          ))}
+        </div>
+        <div class="mk-spark" aria-hidden="true">{[40, 62, 50, 74, 58, 80, 66].map((h) => (<span style={`height:${h}%`}></span>))}</div>
+        <span class="mk-vit-cap">Recovery trending up · 7-day view</span>
+      </div>
+    </div>
+  )}
+  {k === "pulseroom-3" && (
+    <div class="mock-phone">
+      <span class="mock-notch" aria-hidden="true"></span>
+      <div class="mock-screen mk-pulse mk-tr">
+        <span class="mk-eyebrow">This week · sleep</span>
+        <div class="mk-week" aria-hidden="true">
+          {[["M", 60], ["T", 45], ["W", 72], ["T", 38], ["F", 80], ["S", 90], ["S", 68]].map(([d, h]) => (
+            <div class="mk-wb"><i style={`height:${h}%`}></i><small>{d}</small></div>
+          ))}
+        </div>
+        <div class="mk-insight"><span class="mk-dot"></span>You sleep best on days you walk before noon.<small>AI insight</small></div>
+      </div>
+    </div>
+  )}
+
+  {/* ===================== ARCFIELD ===================== */}
+  {k === "arcfield-1" && (
+    <div class="mock-term">
+      <div class="mock-bar"><i></i><i></i><i></i><span class="mock-url">arcfield.dev / docs</span></div>
+      <div class="mock-screen mk-arc">
+        <div class="mk-ask"><span class="mk-ask-q">⌥ “send a webhook when a payment succeeds”</span></div>
+        <pre class="mk-code"><code><span class="ln">1</span><span class="kw">import</span> {`{ Arcfield }`} <span class="kw">from</span> <span class="st">"arcfield"</span>
+<span class="ln">2</span>
+<span class="ln">3</span><span class="kw">const</span> arc = <span class="fn">new</span> Arcfield(env.<span class="vr">ARC_KEY</span>)
+<span class="ln">4</span>
+<span class="ln">5</span>arc.webhooks.<span class="fn">on</span>(<span class="st">"payment.succeeded"</span>, <span class="kw">async</span> (e) => {`{`}
+<span class="ln">6</span>  <span class="kw">await</span> notify(e.<span class="vr">customer</span>, e.<span class="vr">amount</span>)
+<span class="ln">7</span>{`}`})</code></pre>
+        <div class="mk-agent"><span class="mk-dot"></span>Agent · grounded in live API reference · <strong>copy</strong></div>
+      </div>
+    </div>
+  )}
+  {k === "arcfield-2" && (
+    <div class="mock-term">
+      <div class="mock-bar"><i></i><i></i><i></i><span class="mock-url">arcfield.dev / playground</span></div>
+      <div class="mock-screen mk-arc mk-pg">
+        <div class="mk-pg-req"><span class="mk-method">GET</span><span class="mk-path">/v1/payments/pay_8Xq2</span><span class="mk-run">Run ▸</span></div>
+        <pre class="mk-code"><code><span class="ln">1</span>{`{`}
+<span class="ln">2</span>  <span class="vr">"id"</span>: <span class="st">"pay_8Xq2"</span>,
+<span class="ln">3</span>  <span class="vr">"status"</span>: <span class="st">"succeeded"</span>,
+<span class="ln">4</span>  <span class="vr">"amount"</span>: <span class="fn">24000</span>,
+<span class="ln">5</span>  <span class="vr">"currency"</span>: <span class="st">"usd"</span>
+<span class="ln">6</span>{`}`}</code></pre>
+        <div class="mk-agent"><span class="mk-dot"></span>200 OK · 84ms · sandbox</div>
+      </div>
+    </div>
+  )}
+  {k === "arcfield-3" && (
+    <div class="mock-browser">
+      <div class="mock-bar"><i></i><i></i><i></i><span class="mock-url">arcfield.dev / dashboard</span></div>
+      <div class="mock-screen mk-arc mk-dash">
+        <span class="mk-eyebrow">API keys</span>
+        <div class="mk-keys">
+          {[["Production", "ak_live_•••• 9f2c"], ["Test", "ak_test_•••• 3b71"]].map(([n, key]) => (
+            <div class="mk-key"><span class="mk-kdot"></span><span>{n}</span><code>{key}</code></div>
+          ))}
+        </div>
+        <span class="mk-eyebrow">Requests · 24h</span>
+        <div class="mk-chart" aria-hidden="true">{[30, 52, 44, 68, 80, 60, 74, 90, 58, 72, 84, 50].map((h) => (<span style={`height:${h}%`}></span>))}</div>
+      </div>
+    </div>
+  )}
+</div>

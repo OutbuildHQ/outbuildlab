@@ -1,0 +1,31 @@
+---
+import Base from "../layouts/Base.astro";
+import PageShell from "../components/PageShell.astro";
+import { services } from "../data/services";
+---
+<Base title="Services — Outbuild Lab" description="Product strategy, design, engineering, AI product engineering and brand — five capabilities run AI-native, with senior judgment on every decision.">
+  <PageShell
+    label="Capabilities"
+    title={["What we", '<em class="stroke">outbuild</em>']}
+    lede="Five capabilities, one AI-native team owning your product end-to-end. AI does the volume; we make the calls. Every engagement is scoped around a real release — in days, not quarters."
+  >
+    <div class="detail-list">
+      {services.map((s, i) => (
+        <article class="detail-block reveal" id={s.slug}>
+          <h3><em>{String(i + 1).padStart(2, "0")} — Capability</em>{s.name}</h3>
+          <div>
+            <p>{s.blurb}</p>
+            <ul>
+              {s.tags.map((t) => <li>{t}</li>)}
+            </ul>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <div class="page-cta reveal">
+      <button type="button" class="btn-accent" data-open-modal data-hover>Start a project ↗</button>
+      <a href="/work" class="page-cta-alt" data-hover>See the lab builds</a>
+    </div>
+  </PageShell>
+</Base>

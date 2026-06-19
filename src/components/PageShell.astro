@@ -1,0 +1,20 @@
+---
+interface Props {
+  label: string;
+  title: string[];   // one entry per display line
+  lede?: string;
+}
+const { label, title, lede } = Astro.props;
+---
+<section class="page-shell">
+  <span class="page-label">{label}</span>
+  <h1 class="page-title">
+    {title.map((line) => (
+      <span class="pt-line"><span class="pt-inner" set:html={line} /></span>
+    ))}
+  </h1>
+  {lede && <p class="page-lede">{lede}</p>}
+</section>
+<div class="page-body">
+  <slot />
+</div>

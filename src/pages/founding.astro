@@ -1,0 +1,37 @@
+---
+import Base from "../layouts/Base.astro";
+import PageShell from "../components/PageShell.astro";
+---
+<Base title="Founding Partners — Outbuild Lab" description="Three founding client slots for Q3 2026: full senior bench, founder pricing locked for life, and a team that treats your launch as its own.">
+  <PageShell
+    label="Founding Partner Program"
+    title={["Three slots.", '<em class="stroke">Then it\'s gone.</em>']}
+    lede="We're onboarding exactly three founding clients for Q3 2026. It's how a new AI-native studio earns its first great case studies — and how you get senior-team obsession, and AI-native speed, at founder pricing."
+  >
+    <div class="detail-list">
+      <article class="detail-block reveal">
+        <h3><em>F.01 — The bench</em>Full senior team</h3>
+        <div>
+          <p>No juniors learning on your budget. Founding partners get the lab's founding team directly — the people whose names are on the door — steering AI across strategy, design and engineering.</p>
+        </div>
+      </article>
+      <article class="detail-block reveal">
+        <h3><em>F.02 — The speed</em>v1 in days</h3>
+        <div>
+          <p>This is the founding-era advantage you can't get later: an AI-native team small enough to move fast and senior enough to move right. We aim to put a working v1 in front of your users in days, then iterate live.</p>
+        </div>
+      </article>
+      <article class="detail-block reveal">
+        <h3><em>F.03 — The price</em>Locked for life</h3>
+        <div>
+          <p>Founding pricing is meaningfully below our standard rate, and it stays yours for every future engagement. When the studio's rates rise, yours don't. Your launch becomes our flagship case study — so we're structurally incapable of phoning it in.</p>
+        </div>
+      </article>
+    </div>
+
+    <div class="page-cta reveal">
+      <button type="button" class="btn-accent" data-open-modal data-magnetic data-hover>Claim a founding slot ↘</button>
+      <a href="/contact" class="page-cta-alt" data-hover>Or just say hello</a>
+    </div>
+  </PageShell>
+</Base>

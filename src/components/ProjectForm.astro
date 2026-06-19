@@ -1,0 +1,37 @@
+---
+// Set data-endpoint to a real endpoint (Formspree, your API, etc.)
+// to go live; until then submissions log locally and show success.
+---
+<form class="ob-form" novalidate>
+  <div class="field">
+    <label>Name</label>
+    <input type="text" name="name" placeholder="Ada Lovelace" required />
+  </div>
+  <div class="field">
+    <label>Email</label>
+    <input type="email" name="email" placeholder="ada@company.com" required />
+  </div>
+  <div class="field">
+    <label>Company / Project</label>
+    <input type="text" name="company" placeholder="Acme Inc." />
+  </div>
+  <div class="field">
+    <label>Budget</label>
+    <select name="budget">
+      <option value="">Select a range</option>
+      <option>Under $10k</option>
+      <option>$10k – $25k</option>
+      <option>$25k – $50k</option>
+      <option>$50k+</option>
+      <option>Founding partner slot</option>
+    </select>
+  </div>
+  <div class="field field--full">
+    <label>What are we building?</label>
+    <textarea name="message" placeholder="The product, the problem, the deadline — give us the shape of it." required></textarea>
+  </div>
+  <div class="form-foot">
+    <button type="submit" class="btn-accent" data-hover>Send it ↗</button>
+    <span class="form-status" role="status"></span>
+  </div>
+</form>

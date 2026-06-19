@@ -1,0 +1,121 @@
+---
+import Base from "../../layouts/Base.astro";
+import CaseMockup from "../../components/work/CaseMockup.astro";
+import { work, getCase, adjacent } from "../../data/work";
+
+export function getStaticPaths() {
+  return work.map((w) => ({ params: { slug: w.slug } }));
+}
+
+const { slug } = Astro.params;
+const study = getCase(slug!)!;
+const { prev, next } = adjacent(study.slug);
+---
+<Base
+  title={`${study.name} — Outbuild Lab`}
+  description={study.oneLiner}
+>
+  <article class="case" style={`--case-accent:${study.accent}`}>
+    <!-- Hero -->
+    <header class="case-hero page-shell">
+      <span class="case-watermark" aria-hidden="true">{study.mono}</span>
+      <a href="/work" class="case-back" data-hover>← Selected builds</a>
+      <span class="page-label">{study.sector} · Concept build</span>
+      <h1 class="case-title">{study.name}</h1>
+      <p class="case-oneliner">{study.oneLiner}</p>
+      <dl class="case-meta">
+        <div><dt>Sector</dt><dd>{study.sector}</dd></div>
+        <div><dt>Build time</dt><dd>{study.tag.replace("-", " ").toLowerCase()}</dd></div>
+        <div><dt>Year</dt><dd>{study.year}</dd></div>
+        <div><dt>Role</dt><dd>{study.role.join(", ")}</dd></div>
+      </dl>
+    </header>
+
+    <!-- Product mockup banner -->
+    <section class={`case-stage ${study.art}`} style={`view-transition-name: case-${study.slug}`}>
+      <CaseMockup slug={study.slug} accent={study.accent} />
+    </section>
+
+    <!-- Body -->
+    <div class="case-body page-body">
+      <section class="case-overview reveal">
+        <span class="case-kicker">Overview</span>
+        <p class="case-lede">{study.overview}</p>
+      </section>
+
+      <div class="detail-list">
+        <article class="detail-block reveal">
+          <h3><em>01 — The challenge</em>What we were solving</h3>
+          <div><p>{study.challenge}</p></div>
+        </article>
+        <article class="detail-block reveal">
+          <h3><em>02 — The approach</em>How we built it</h3>
+          <div><p>{study.approach}</p></div>
+        </article>
+      </div>
+
+      <section class="case-showcase">
+        <span class="case-kicker reveal">More from the build</span>
+        <div class="showcase-list">
+          {study.screens.map((sc, i) => (
+            <div class={`showcase-item ${i % 2 ? "is-flip" : ""}`}>
+              <div class={`case-shot ${study.art}`}>
+                <CaseMockup slug={study.slug} accent={study.accent} screen={sc.n} />
+              </div>
+              <div class="showcase-cap reveal">
+                <span class="sc-index">{String(i + 2).padStart(2, "0")}</span>
+                <h4>{sc.title}</h4>
+                <p>{sc.body}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section class="case-features reveal">
+        <span class="case-kicker">What's inside</span>
+        <div class="case-feature-grid">
+          {study.features.map((f, i) => (
+            <div class="case-feature">
+              <span class="cf-index">{String(i + 1).padStart(2, "0")}</span>
+              <h4>{f.title}</h4>
+              <p>{f.body}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section class="case-results reveal">
+        <span class="case-kicker">By the numbers</span>
+        <div class="stats case-stats">
+          {study.stats.map((s) => (
+            <div class="stat">
+              <span class="stat-num" data-count={s.num} data-suffix={s.suffix}>0</span>
+              <span class="stat-label">{s.label}</span>
+            </div>
+          ))}
+        </div>
+        <p class="case-honest">These are build facts, not invented client metrics — Outbuild Lab concept builds, made to show the craft and the clock.</p>
+      </section>
+
+      <div class="page-cta reveal">
+        <button type="button" class="btn-accent" data-open-modal data-hover>Build something like this ↗</button>
+        <a href="/lab" class="page-cta-alt" data-hover>Sketch your own in the Lab</a>
+      </div>
+    </div>
+
+    <!-- Prev / next -->
+    <nav class="case-nav" aria-label="More builds">
+      <a href={`/work/${prev.slug}`} class="case-nav-item" data-hover>
+        <span>← Previous</span>
+        <strong>{prev.name}</strong>
+        <em>{prev.sector}</em>
+      </a>
+      <a href={`/work/${next.slug}`} class="case-nav-item case-nav-item--next" data-hover>
+        <span>Next →</span>
+        <strong>{next.name}</strong>
+        <em>{next.sector}</em>
+      </a>
+    </nav>
+  </article>
+</Base>

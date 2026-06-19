@@ -1,0 +1,21 @@
+# dependencies
+node_modules/
+
+# Astro build output
+dist/
+.astro/
+
+# Next.js (legacy reference build artifacts, if any)
+.next/
+out/
+
+# logs & OS
+*.log
+.DS_Store
+
+# env
+.env*
+!.env.example
+
+# editor / tooling local state
+.claude/settings.local.json

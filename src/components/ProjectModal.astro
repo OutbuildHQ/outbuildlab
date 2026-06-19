@@ -1,0 +1,16 @@
+---
+import ProjectForm from "./ProjectForm.astro";
+---
+<div class="modal" id="projectModal" aria-hidden="true" role="dialog" aria-labelledby="projectModalTitle">
+  <div class="modal-backdrop"></div>
+  <div class="modal-panel">
+    <div class="modal-head">
+      <div>
+        <h2 class="modal-title" id="projectModalTitle">Start a project</h2>
+        <p class="modal-sub">Tell us what you're building. We reply within 24 hours — and can often show you something before the week is out.</p>
+      </div>
+      <button type="button" class="modal-close" aria-label="Close dialog">✕</button>
+    </div>
+    <ProjectForm />
+  </div>
+</div>

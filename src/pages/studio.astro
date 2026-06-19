@@ -1,0 +1,43 @@
+---
+import Base from "../layouts/Base.astro";
+import PageShell from "../components/PageShell.astro";
+---
+<Base title="Studio — Outbuild Lab" description="Outbuild Lab is an AI-native product studio. We design and build with AI at full power, and bring the taste and judgment that turn model output into products people trust.">
+  <PageShell
+    label="The Studio"
+    title={["AI is the medium.", '<em class="stroke">We are the judgment.</em>']}
+    lede="Outbuild Lab opened in 2026 on a simple bet: when AI can generate anything, the scarce thing is knowing what's worth building and making it ship at production quality. That's the whole studio."
+  >
+    <div class="detail-list">
+      <article class="detail-block reveal">
+        <h3><em>01 — How we work</em>Generate fast, direct hard</h3>
+        <div>
+          <p>AI writes the first draft of nearly everything — research, copy, interfaces, code. Our job is the harder half: scoping the right thing, curating ruthlessly, and catching the model when it's confidently wrong. Volume is cheap now; direction is the work.</p>
+        </div>
+      </article>
+      <article class="detail-block reveal">
+        <h3><em>02 — Why it's not "just prompting"</em>Taste is the moat</h3>
+        <div>
+          <p>Anyone can open a model. Almost nobody can turn a vague idea into the right spec, push AI from demo quality to production quality, and know what "good" actually is. You're not paying for AI access — you're paying for the eye that separates shippable from slop.</p>
+        </div>
+      </article>
+      <article class="detail-block reveal">
+        <h3><em>03 — What it buys you</em>Days, not quarters</h3>
+        <div>
+          <p>An AI-native team of a few outpaces a humans-only team of thirty. We ship a sharp, real v1 in days — then iterate live with users instead of polishing a deck nobody has touched. Speed isn't a discount on quality; it's how we find quality faster.</p>
+        </div>
+      </article>
+      <article class="detail-block reveal">
+        <h3><em>04 — Why now</em>New, by design</h3>
+        <div>
+          <p>The studios you'll admire in 2030 are being built AI-native right now. Being early means our reputation rides on your launch — so founding clients get obsession no retainer can buy, at pricing that won't exist next year.</p>
+        </div>
+      </article>
+    </div>
+
+    <div class="page-cta reveal">
+      <button type="button" class="btn-accent" data-open-modal data-hover>Work with us ↗</button>
+      <a href="/founding" class="page-cta-alt" data-hover>Founding partner program</a>
+    </div>
+  </PageShell>
+</Base>

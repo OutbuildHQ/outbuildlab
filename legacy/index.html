@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Outbuild Lab — Product Design & Development Studio</title>
+  <meta name="description" content="Outbuild Lab is a product design & development studio. We partner with founders and teams to design, engineer and ship digital products that outperform." />
+
+  <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="%230B0B0C"/><path d="M19.26 6.54 A10 10 0 1 0 25.46 12.74" fill="none" stroke="%23D7FF3E" stroke-width="2.5" stroke-linecap="round"/><rect x="21.07" y="6.93" width="4" height="4" rx="0.8" fill="%23D7FF3E" transform="rotate(45 23.07 8.93)"/></svg>' />
+
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=satoshi@400,500,700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <script type="importmap">
+    { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" } }
+  </script>
+</head>
+<body>
+
+  <!-- ===================== PRELOADER ===================== -->
+  <div class="preloader" id="preloader">
+    <div class="preloader-inner">
+      <div class="preloader-mark">
+        <svg viewBox="0 0 32 32" aria-hidden="true">
+          <path d="M19.26 6.54 A10 10 0 1 0 25.46 12.74" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+          <rect x="21.07" y="6.93" width="4" height="4" rx="0.8" fill="currentColor" transform="rotate(45 23.07 8.93)"/>
+        </svg>
+        <span>OUTBUILD&nbsp;LAB</span>
+      </div>
+      <div class="preloader-count"><span id="loaderCount">000</span></div>
+      <div class="preloader-status" id="loaderStatus">ASSEMBLING&nbsp;—&nbsp;V.01</div>
+    </div>
+  </div>
+
+  <!-- ===================== CURSOR ===================== -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"><span>VIEW</span></div>
+
+  <!-- ===================== GRAIN ===================== -->
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- ===================== HEADER ===================== -->
+  <header class="site-header" id="siteHeader">
+    <a href="#top" class="logo" data-hover>
+      <svg viewBox="0 0 32 32" aria-hidden="true">
+        <path d="M19.26 6.54 A10 10 0 1 0 25.46 12.74" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+        <rect x="21.07" y="6.93" width="4" height="4" rx="0.8" fill="currentColor" transform="rotate(45 23.07 8.93)"/>
+      </svg>
+      <span class="logo-word">OUTBUILD<sup>LAB</sup></span>
+    </a>
+
+    <nav class="main-nav" aria-label="Primary">
+      <a href="#work" data-hover>Work</a>
+      <a href="#studio" data-hover>Studio</a>
+      <a href="#services" data-hover>Services</a>
+      <a href="#contact" data-hover>Contact</a>
+    </nav>
+
+    <div class="header-right">
+      <a href="#contact" class="btn-pill" data-magnetic data-hover>
+        <span class="btn-pill-label">Start a project</span>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===================== MOBILE MENU ===================== -->
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <div class="mobile-menu-links">
+      <a href="#work" class="mm-link"><em>01</em>Work</a>
+      <a href="#studio" class="mm-link"><em>02</em>Studio</a>
+      <a href="#services" class="mm-link"><em>03</em>Services</a>
+      <a href="#contact" class="mm-link"><em>04</em>Contact</a>
+    </div>
+    <div class="mobile-menu-foot">
+      <a href="mailto:hello@outbuildlab.com">hello@outbuildlab.com</a>
+      <p>Lagos → Worldwide</p>
+    </div>
+  </div>
+
+  <main id="top">
+
+    <!-- ===================== HERO ===================== -->
+    <section class="hero" id="hero">
+      <canvas id="heroCanvas" aria-hidden="true"></canvas>
+      <div class="hero-fallback" aria-hidden="true"></div>
+
+      <div class="hero-content">
+        <div class="hero-eyebrow">
+          <span class="tick">●</span>
+          <span>Product&nbsp;Design&nbsp;&amp;&nbsp;Development&nbsp;Studio</span>
+        </div>
+
+        <h1 class="hero-title" aria-label="Outbuild the ordinary">
+          <span class="ht-line"><span class="ht-inner">OUTBUILD</span></span>
+          <span class="ht-line ht-line--mix">
+            <span class="ht-inner"><em class="stroke">THE</em>&nbsp;ORDINARY<sup class="reg">®</sup></span>
+          </span>
+        </h1>
+
+        <div class="hero-foot">
+          <p class="hero-sub">
+            We partner with founders and ambitious teams to design, engineer
+            and ship digital products that outperform — from first sketch to
+            first thousand users.
+          </p>
+          <div class="hero-meta">
+            <div class="hero-scroll" data-hover id="scrollCue">
+              <span class="hero-scroll-line"></span>
+              <span>SCROLL</span>
+            </div>
+            <div class="hero-tags">
+              <span>NOW BOOKING — Q3 2026</span>
+              <span>LAGOS → WORLDWIDE</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== MARQUEE ===================== -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track" id="marqueeTrack">
+        <div class="marquee-group">
+          <span>NOW OPEN</span><i>✦</i><span>STRATEGY</span><i>✦</i><span>DESIGN</span><i>✦</i><span>ENGINEERING</span><i>✦</i><span>MOTION</span><i>✦</i>
+        </div>
+        <div class="marquee-group">
+          <span>NOW OPEN</span><i>✦</i><span>STRATEGY</span><i>✦</i><span>DESIGN</span><i>✦</i><span>ENGINEERING</span><i>✦</i><span>MOTION</span><i>✦</i>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== STUDIO / MANIFESTO ===================== -->
+    <section class="studio section" id="studio">
+      <div class="section-head">
+        <span class="section-label">01 — The Studio</span>
+        <span class="section-rule"></span>
+      </div>
+
+      <p class="manifesto" id="manifesto">
+        Most studios stop at the handoff. We won't. Outbuild Lab opens its
+        doors with one promise — strategy, design and engineering in one
+        room, so the product you imagine is the product that ships.
+      </p>
+
+      <div class="studio-grid">
+        <div class="studio-fact reveal">
+          <h3>Built like a product team</h3>
+          <p>No silos, no relay race. A single senior squad owns your product from research to release, moving at startup speed with studio-grade craft.</p>
+        </div>
+        <div class="studio-fact reveal">
+          <h3>Obsessed with shipping</h3>
+          <p>Beautiful decks don't compound. Shipped products do. Every engagement is scoped around a real release — in weeks, not quarters.</p>
+        </div>
+        <div class="studio-fact reveal">
+          <h3>Hungry, by design</h3>
+          <p>We're new — and that's your leverage. Your launch is our reputation, so a founding client gets the kind of obsession no agency retainer can buy.</p>
+        </div>
+      </div>
+
+      <div class="stats" id="stats">
+        <div class="stat">
+          <span class="stat-num" data-count="15" data-suffix="+">0</span>
+          <span class="stat-label">Years combined craft</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num" data-count="4" data-suffix="">0</span>
+          <span class="stat-label">Disciplines, one room</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num" data-count="3" data-suffix="">0</span>
+          <span class="stat-label">Founding slots open</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num" data-count="24" data-suffix="h">0</span>
+          <span class="stat-label">Reply time, max</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== SERVICES ===================== -->
+    <section class="services section" id="services">
+      <div class="section-head">
+        <span class="section-label">02 — Capabilities</span>
+        <span class="section-rule"></span>
+      </div>
+
+      <h2 class="section-title reveal">What we<br /><em class="stroke">outbuild</em></h2>
+
+      <div class="service-list">
+        <article class="service-row" data-hover>
+          <span class="sr-index">01</span>
+          <h3 class="sr-name">Product Strategy</h3>
+          <p class="sr-tags">Research · Positioning · Roadmaps · Validation</p>
+          <span class="sr-arrow" aria-hidden="true">↗</span>
+        </article>
+        <article class="service-row" data-hover>
+          <span class="sr-index">02</span>
+          <h3 class="sr-name">UX / UI Design</h3>
+          <p class="sr-tags">Interfaces · Design systems · Prototyping · Testing</p>
+          <span class="sr-arrow" aria-hidden="true">↗</span>
+        </article>
+        <article class="service-row" data-hover>
+          <span class="sr-index">03</span>
+          <h3 class="sr-name">Engineering</h3>
+          <p class="sr-tags">Web &amp; mobile apps · APIs · AI integration · DevOps</p>
+          <span class="sr-arrow" aria-hidden="true">↗</span>
+        </article>
+        <article class="service-row" data-hover>
+          <span class="sr-index">04</span>
+          <h3 class="sr-name">Brand &amp; Motion</h3>
+          <p class="sr-tags">Identity · Art direction · Interaction · 3D &amp; motion</p>
+          <span class="sr-arrow" aria-hidden="true">↗</span>
+        </article>
+      </div>
+
+      <div class="process reveal">
+        <div class="process-step"><em>P.01</em><span>Discover</span></div>
+        <div class="process-step"><em>P.02</em><span>Design</span></div>
+        <div class="process-step"><em>P.03</em><span>Build</span></div>
+        <div class="process-step"><em>P.04</em><span>Ship</span></div>
+      </div>
+    </section>
+
+    <!-- ===================== WORK ===================== -->
+    <section class="work section" id="work">
+      <div class="section-head">
+        <span class="section-label">03 — In the Lab</span>
+        <span class="section-rule"></span>
+      </div>
+
+      <h2 class="section-title reveal">Proof,<br /><em class="stroke">not promises</em></h2>
+
+      <p class="work-intro reveal">
+        No borrowed logos, no inflated case studies. These are concept builds
+        straight off the lab bench — proof of craft while our first client
+        stories are being written. One of these slots could be yours.
+      </p>
+
+      <div class="work-grid">
+        <a href="#contact" class="work-card wc-a" data-cursor="view" data-hover>
+          <div class="work-visual">
+            <div class="wv-art wv-art-1"><span>He</span></div>
+          </div>
+          <div class="work-caption">
+            <h3>Helio</h3>
+            <p>Fintech concept — strategy, product &amp; build</p>
+            <span>LAB 001</span>
+          </div>
+        </a>
+
+        <a href="#contact" class="work-card wc-b" data-cursor="view" data-hover>
+          <div class="work-visual">
+            <div class="wv-art wv-art-2"><span>Nv</span></div>
+          </div>
+          <div class="work-caption">
+            <h3>Northvane</h3>
+            <p>Commerce concept — design &amp; engineering</p>
+            <span>LAB 002</span>
+          </div>
+        </a>
+
+        <a href="#contact" class="work-card wc-c" data-cursor="view" data-hover>
+          <div class="work-visual">
+            <div class="wv-art wv-art-3"><span>Pr</span></div>
+          </div>
+          <div class="work-caption">
+            <h3>Pulseroom</h3>
+            <p>Health AI concept — product &amp; mobile</p>
+            <span>LAB 003</span>
+          </div>
+        </a>
+
+        <a href="#contact" class="work-card wc-d" data-cursor="view" data-hover>
+          <div class="work-visual">
+            <div class="wv-art wv-art-4"><span>Af</span></div>
+          </div>
+          <div class="work-caption">
+            <h3>Arcfield</h3>
+            <p>Dev-tools concept — brand, site &amp; docs</p>
+            <span>LAB 004</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ===================== FOUNDING PARTNERS ===================== -->
+    <section class="founding section" id="founding">
+      <span class="founding-label reveal">04 — Founding Partner Program</span>
+      <h2 class="reveal">We're taking on <em>3 founding clients</em> for Q3 2026.</h2>
+      <p class="reveal">
+        Founding partners get our full senior bench, founder-friendly pricing
+        locked in for life, and a team that treats your launch as its own.
+        When the three slots are gone, they're gone.
+      </p>
+      <a href="#contact" class="btn-dark reveal" data-magnetic data-hover>Claim a founding slot ↘</a>
+    </section>
+
+    <!-- ===================== CTA ===================== -->
+    <section class="cta section" id="contact">
+      <div class="section-head">
+        <span class="section-label">05 — Contact</span>
+        <span class="section-rule"></span>
+      </div>
+
+      <p class="cta-kicker reveal">Have an idea worth building? Become the case study we brag about.</p>
+
+      <a href="mailto:hello@outbuildlab.com" class="cta-link" data-hover>
+        <span class="cta-line"><span class="cta-inner">LET'S&nbsp;BUILD&nbsp;<span class="cta-arrow">↗</span></span></span>
+      </a>
+
+      <div class="cta-meta reveal">
+        <a href="mailto:hello@outbuildlab.com" data-hover>hello@outbuildlab.com</a>
+        <p>We reply within 24 hours — usually faster.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="site-footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <svg viewBox="0 0 32 32" aria-hidden="true">
+          <path d="M19.26 6.54 A10 10 0 1 0 25.46 12.74" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+          <rect x="21.07" y="6.93" width="4" height="4" rx="0.8" fill="currentColor" transform="rotate(45 23.07 8.93)"/>
+        </svg>
+        <p>Outbuild Lab —<br />the studio that ships.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer">
+        <div>
+          <h4>Sitemap</h4>
+          <a href="#work" data-hover>Work</a>
+          <a href="#studio" data-hover>Studio</a>
+          <a href="#services" data-hover>Services</a>
+          <a href="#contact" data-hover>Contact</a>
+        </div>
+        <div>
+          <h4>Socials</h4>
+          <a href="#" data-hover>X / Twitter</a>
+          <a href="#" data-hover>LinkedIn</a>
+          <a href="#" data-hover>Dribbble</a>
+          <a href="#" data-hover>GitHub</a>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Outbuild Lab. All rights reserved.</span>
+      <span id="localTime">LAGOS — 00:00</span>
+      <a href="#top" class="back-top" data-hover>BACK TO TOP ↑</a>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+  <script type="module" src="main.js"></script>
+</body>
+</html>

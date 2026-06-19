@@ -1,0 +1,54 @@
+---
+import Logo from "./Logo.astro";
+
+const links = [
+  { href: "/work", label: "Work" },
+  { href: "/studio", label: "Studio" },
+  { href: "/services", label: "Services" },
+  { href: "/lab", label: "Lab" },
+  { href: "/contact", label: "Contact" },
+];
+const path = Astro.url.pathname.replace(/\/$/, "") || "/";
+---
+<header class="site-header" id="siteHeader">
+  <a href="/" class="logo" data-hover aria-label="Outbuild Lab — home">
+    <Logo />
+    <span class="logo-word">OUTBUILD<sup>LAB</sup></span>
+  </a>
+
+  <nav class="main-nav" aria-label="Primary">
+    {links.map((l) => (
+      <a href={l.href} data-hover aria-current={path === l.href ? "page" : undefined}>
+        {l.label}
+      </a>
+    ))}
+  </nav>
+
+  <div class="header-right">
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle light / dark theme" data-hover>
+      <svg viewBox="0 0 20 20" aria-hidden="true">
+        <circle cx="10" cy="10" r="7" fill="none" stroke="currentColor" stroke-width="1.5" />
+        <path d="M10 3 A7 7 0 0 0 10 17 Z" fill="currentColor" />
+      </svg>
+    </button>
+    <button type="button" class="btn-pill" data-open-modal data-magnetic data-hover>
+      <span class="btn-pill-label">Start a project</span>
+    </button>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu-links">
+    {links.map((l, i) => (
+      <a href={l.href} class="mm-link"><em>{String(i + 1).padStart(2, "0")}</em>{l.label}</a>
+    ))}
+    <a href="/founding" class="mm-link"><em>06</em>Founding</a>
+  </div>
+  <div class="mobile-menu-foot">
+    <a href="mailto:hello@outbuildlab.com">hello@outbuildlab.com</a>
+    <p>Lagos → Worldwide</p>
+  </div>
+</div>

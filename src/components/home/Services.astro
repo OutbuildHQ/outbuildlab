@@ -1,0 +1,36 @@
+---
+import { services } from "../../data/services";
+---
+<section class="services section" id="services">
+  <div class="section-head">
+    <span class="section-label">02 — Capabilities</span>
+    <span class="section-rule"></span>
+    <a href="/services" class="section-more" data-hover>All capabilities ↗</a>
+  </div>
+
+  <h2 class="section-title reveal">What we<br /><em class="stroke">outbuild</em></h2>
+
+  <p class="work-intro reveal">
+    Five capabilities, one AI-native team. We run every discipline with AI
+    at full power and a human hand on the wheel — so you get the speed of
+    automation and the judgment of a senior studio.
+  </p>
+
+  <div class="service-list">
+    {services.map((s, i) => (
+      <a class="service-row" href={`/services#${s.slug}`} data-hover>
+        <span class="sr-index">{String(i + 1).padStart(2, "0")}</span>
+        <h3 class="sr-name">{s.name}</h3>
+        <p class="sr-tags">{s.tags.join(" · ")}</p>
+        <span class="sr-arrow" aria-hidden="true">↗</span>
+      </a>
+    ))}
+  </div>
+
+  <div class="process reveal">
+    <div class="process-step"><em>P.01</em><span>Brief</span></div>
+    <div class="process-step"><em>P.02</em><span>Generate</span></div>
+    <div class="process-step"><em>P.03</em><span>Direct</span></div>
+    <div class="process-step"><em>P.04</em><span>Ship</span></div>
+  </div>
+</section>

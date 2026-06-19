@@ -1,0 +1,19 @@
+---
+import Base from "../layouts/Base.astro";
+import PageShell from "../components/PageShell.astro";
+import WorkGrid from "../components/WorkGrid.astro";
+---
+<Base title="Work — Outbuild Lab" description="AI-built concepts from the Outbuild Lab bench — fintech, commerce, health AI and dev tools, each generated and directed to ship quality in days.">
+  <PageShell
+    label="Selected Builds"
+    title={["Proof,", '<em class="stroke">not promises</em>']}
+    lede="Every build below is self-initiated — generated with AI, directed by us, finished to lab standard. The build time on each is the point: this is what AI-native velocity looks like. As client work ships, it lands here with full case studies."
+  >
+    <WorkGrid />
+
+    <div class="page-cta reveal">
+      <button type="button" class="btn-accent" data-open-modal data-hover>Put your product here ↗</button>
+      <a href="/founding" class="page-cta-alt" data-hover>Founding partner program</a>
+    </div>
+  </PageShell>
+</Base>
