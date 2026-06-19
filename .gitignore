@@ -4,6 +4,7 @@ node_modules/
 # Astro build output
 dist/
 .astro/
+.netlify/
 
 # Next.js (legacy reference build artifacts, if any)
 .next/
