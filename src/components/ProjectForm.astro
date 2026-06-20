@@ -1,8 +1,20 @@
 ---
-// Set data-endpoint to a real endpoint (Formspree, your API, etc.)
-// to go live; until then submissions log locally and show success.
+// Wired to Netlify Forms (form name: "contact"). Submissions are handled
+// by Netlify on the deployed site — set up notification emails in
+// Netlify → Forms → contact → Settings & notifications.
+// The submit is AJAX'd in app.js so the UX stays in-page.
 ---
-<form class="ob-form" novalidate>
+<form
+  class="ob-form"
+  name="contact"
+  method="POST"
+  data-netlify="true"
+  netlify-honeypot="bot-field"
+>
+  <input type="hidden" name="form-name" value="contact" />
+  <p class="ob-honeypot" hidden aria-hidden="true">
+    <label>Leave this empty: <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
+  </p>
   <div class="field">
     <label>Name</label>
     <input type="text" name="name" placeholder="Ada Lovelace" required />

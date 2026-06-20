@@ -446,33 +446,27 @@ if (modal) {
 }
 
 /* ============================================================
-   FORMS (modal + contact page)
-   Wire a real endpoint by setting data-endpoint on the form —
-   e.g. a Formspree URL or your own API. Until then submissions
-   succeed locally so the UX can be exercised end-to-end.
+   FORMS (modal + contact page) — Netlify Forms
+   AJAX-submitted (form-urlencoded) so the success state stays
+   in-page. Netlify records the submission on the deployed site;
+   in local dev the POST 404s, so the error path is expected.
    ============================================================ */
 document.querySelectorAll("form.ob-form").forEach((form) => {
   const status = form.querySelector(".form-status");
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
+    if (!form.reportValidity()) return; // native required-field checks
     const btn = form.querySelector("button[type=submit]");
     btn.disabled = true;
     status.textContent = "SENDING…";
     status.className = "form-status";
     try {
-      const endpoint = form.dataset.endpoint;
-      if (endpoint) {
-        const res = await fetch(endpoint, {
-          method: "POST",
-          headers: { "Content-Type": "application/json", Accept: "application/json" },
-          body: JSON.stringify(Object.fromEntries(new FormData(form))),
-        });
-        if (!res.ok) throw new Error("Request failed");
-      } else {
-        await new Promise((r) => setTimeout(r, 900));
-        console.info("[Outbuild Lab] form submission (no endpoint configured):",
-          Object.fromEntries(new FormData(form)));
-      }
+      const res = await fetch(form.getAttribute("action") || "/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(new FormData(form)).toString(),
+      });
+      if (!res.ok) throw new Error("Request failed");
       status.textContent = "RECEIVED — WE'LL REPLY WITHIN 24H.";
       status.classList.add("is-ok");
       form.reset();
