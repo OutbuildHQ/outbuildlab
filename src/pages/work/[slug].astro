@@ -25,7 +25,7 @@ const { prev, next } = adjacent(study.slug);
       <p class="case-oneliner">{study.oneLiner}</p>
       <dl class="case-meta">
         <div><dt>Sector</dt><dd>{study.sector}</dd></div>
-        <div><dt>Build time</dt><dd>{study.tag.replace("-", " ").toLowerCase()}</dd></div>
+        <div><dt>Reference</dt><dd>{study.tag}</dd></div>
         <div><dt>Year</dt><dd>{study.year}</dd></div>
         <div><dt>Role</dt><dd>{study.role.join(", ")}</dd></div>
       </dl>
@@ -86,7 +86,7 @@ const { prev, next } = adjacent(study.slug);
       </section>
 
       <section class="case-results reveal">
-        <span class="case-kicker">By the numbers</span>
+        <span class="case-kicker">At a glance</span>
         <div class="stats case-stats">
           {study.stats.map((s) => (
             <div class="stat">
@@ -95,7 +95,7 @@ const { prev, next } = adjacent(study.slug);
             </div>
           ))}
         </div>
-        <p class="case-honest">These are build facts, not invented client metrics — Outbuild Lab concept builds, made to show the craft and the clock.</p>
+        <p class="case-honest">Self-initiated concept builds — design decisions and method, not client deliverables or a track record. Real case studies land here as client work ships.</p>
       </section>
 
       <div class="page-cta reveal">

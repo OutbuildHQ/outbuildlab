@@ -26,7 +26,7 @@ export interface CaseStudy {
   name: string;
   mono: string;
   desc: string;
-  tag: string; // build time, shown on the card
+  tag: string; // short reference label shown on the card
   variant: string; // grid placement class
   art: string; // gradient art class
   accent: string; // case accent hex
@@ -49,7 +49,7 @@ export const work: CaseStudy[] = [
     name: "Helio",
     mono: "He",
     desc: "Fintech app — strategy, product & build",
-    tag: "5-DAY BUILD",
+    tag: "LAB 001",
     variant: "wc-a",
     art: "wv-art-1",
     accent: "#b8e637",
@@ -74,10 +74,10 @@ export const work: CaseStudy[] = [
       { n: 3, title: "Spending, made obvious", body: "Auto-categorised insights with a glanceable breakdown, so you see where it went without doing the maths." },
     ],
     stats: [
-      { num: "5", suffix: "", label: "Days, brief to prototype" },
-      { num: "14", suffix: "", label: "Screens designed" },
-      { num: "1", suffix: "", label: "Designer-engineer" },
-      { num: "100", suffix: "%", label: "AI-assisted build" },
+      { num: "2", suffix: "", label: "Taps to send" },
+      { num: "4", suffix: "", label: "Core features" },
+      { num: "3", suffix: "", label: "Disciplines" },
+      { num: "100", suffix: "%", label: "AI-assisted" },
     ],
   },
   {
@@ -85,7 +85,7 @@ export const work: CaseStudy[] = [
     name: "Northvane",
     mono: "Nv",
     desc: "Commerce platform — design & engineering",
-    tag: "4-DAY BUILD",
+    tag: "LAB 002",
     variant: "wc-b",
     art: "wv-art-2",
     accent: "#7a7dff",
@@ -110,10 +110,10 @@ export const work: CaseStudy[] = [
       { n: 3, title: "Checkout that doesn't leak", body: "Wallet-first, card fallback, total always visible. Every step removed is a sale kept." },
     ],
     stats: [
-      { num: "4", suffix: "", label: "Days, brief to prototype" },
-      { num: "98", suffix: "", label: "Lighthouse target" },
       { num: "3", suffix: "", label: "Checkout taps" },
-      { num: "100", suffix: "%", label: "AI-assisted build" },
+      { num: "4", suffix: "", label: "Core features" },
+      { num: "3", suffix: "", label: "Disciplines" },
+      { num: "100", suffix: "%", label: "AI-assisted" },
     ],
   },
   {
@@ -121,7 +121,7 @@ export const work: CaseStudy[] = [
     name: "Pulseroom",
     mono: "Pr",
     desc: "Health AI companion — RAG, product & mobile",
-    tag: "6-DAY BUILD",
+    tag: "LAB 003",
     variant: "wc-c",
     art: "wv-art-3",
     accent: "#ff7a5c",
@@ -146,10 +146,10 @@ export const work: CaseStudy[] = [
       { n: 3, title: "Patterns you'd miss", body: "The companion reads your week and surfaces the one insight that actually changes tomorrow." },
     ],
     stats: [
-      { num: "6", suffix: "", label: "Days, brief to prototype" },
-      { num: "40", suffix: "+", label: "Evals written" },
       { num: "2", suffix: "", label: "Guardrail layers" },
-      { num: "100", suffix: "%", label: "AI-assisted build" },
+      { num: "4", suffix: "", label: "Core features" },
+      { num: "3", suffix: "", label: "Disciplines" },
+      { num: "100", suffix: "%", label: "AI-assisted" },
     ],
   },
   {
@@ -157,7 +157,7 @@ export const work: CaseStudy[] = [
     name: "Arcfield",
     mono: "Af",
     desc: "Dev-tools — agent, brand, site & docs",
-    tag: "3-DAY BUILD",
+    tag: "LAB 004",
     variant: "wc-d",
     art: "wv-art-4",
     accent: "#3ee6c4",
@@ -182,10 +182,10 @@ export const work: CaseStudy[] = [
       { n: 3, title: "A dashboard devs trust", body: "Keys, environments and request volume in one clean console — the unglamorous surface, done right." },
     ],
     stats: [
-      { num: "3", suffix: "", label: "Days, brief to ship" },
       { num: "1", suffix: "", label: "Embedded agent" },
-      { num: "9", suffix: "", label: "Pages & references" },
-      { num: "100", suffix: "%", label: "AI-assisted build" },
+      { num: "4", suffix: "", label: "Core features" },
+      { num: "3", suffix: "", label: "Disciplines" },
+      { num: "100", suffix: "%", label: "AI-assisted" },
     ],
   },
 ];
