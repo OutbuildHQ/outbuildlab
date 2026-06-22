@@ -10,10 +10,17 @@ export function getStaticPaths() {
 const { slug } = Astro.params;
 const study = getCase(slug!)!;
 const { prev, next } = adjacent(study.slug);
+
+const breadcrumbs = [
+  { name: "Home", url: new URL("/", Astro.site).href },
+  { name: "Work", url: new URL("/work/", Astro.site).href },
+  { name: study.name, url: new URL(`/work/${study.slug}/`, Astro.site).href },
+];
 ---
 <Base
-  title={`${study.name} — Outbuild Lab`}
+  title={`${study.name} — ${study.sector} concept — Outbuild Lab`}
   description={study.oneLiner}
+  breadcrumbs={breadcrumbs}
 >
   <article class="case" style={`--case-accent:${study.accent}`}>
     <!-- Hero -->

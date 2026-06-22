@@ -8,11 +8,15 @@ import ProjectModal from "../components/ProjectModal.astro";
 interface Props {
   title?: string;
   description?: string;
+  robots?: string;
+  breadcrumbs?: { name: string; url: string }[];
 }
 
 const {
-  title = "Outbuild Lab — AI-Native Product Studio",
+  title = "Outbuild Lab — AI-Native Product Design & Development Studio",
   description = "Outbuild Lab is an AI-native product studio. We design and build with AI at full power, and bring the taste and judgment that turn model output into products people trust — strategy to shipped, in days.",
+  robots = "index, follow",
+  breadcrumbs,
 } = Astro.props;
 
 const favicon =
@@ -22,29 +26,53 @@ const favicon =
 const ogImage = new URL("/og.png", Astro.site).href;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 
-// Organization structured data — helps search engines model the studio
-const orgSchema = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: "Outbuild Lab",
-  url: Astro.site?.href,
-  logo: new URL("/icon-512.png", Astro.site).href,
-  image: ogImage,
-  description:
-    "AI-native product studio. We design and build with AI at full power, and bring the taste and judgment that turn model output into products people trust.",
-  email: "hello@outbuildlab.com",
-  foundingDate: "2026",
-  address: { "@type": "PostalAddress", addressLocality: "Lagos", addressCountry: "NG" },
-  areaServed: "Worldwide",
-  knowsAbout: [
-    "Product strategy",
-    "Product design",
-    "Software engineering",
-    "AI product engineering",
-    "Brand and motion",
-  ],
-  identifier: { "@type": "PropertyValue", name: "RC Number", value: "8076384" },
-};
+// Structured data (@graph): Organization + WebSite, plus BreadcrumbList
+// on pages that pass `breadcrumbs`. Helps search engines model the studio
+// and render rich results.
+const site = Astro.site?.href;
+const graph: Record<string, unknown>[] = [
+  {
+    "@type": "Organization",
+    "@id": `${site}#org`,
+    name: "Outbuild Lab",
+    url: site,
+    logo: new URL("/icon-512.png", Astro.site).href,
+    image: ogImage,
+    description:
+      "AI-native product studio. We design and build with AI at full power, and bring the taste and judgment that turn model output into products people trust.",
+    email: "hello@outbuildlab.com",
+    foundingDate: "2026",
+    address: { "@type": "PostalAddress", addressLocality: "Lagos", addressCountry: "NG" },
+    areaServed: "Worldwide",
+    knowsAbout: [
+      "Product strategy",
+      "Product design",
+      "Software engineering",
+      "AI product engineering",
+      "Brand and motion",
+    ],
+    identifier: { "@type": "PropertyValue", name: "RC Number", value: "8076384" },
+  },
+  {
+    "@type": "WebSite",
+    "@id": `${site}#website`,
+    name: "Outbuild Lab",
+    url: site,
+    publisher: { "@id": `${site}#org` },
+  },
+];
+if (breadcrumbs?.length) {
+  graph.push({
+    "@type": "BreadcrumbList",
+    itemListElement: breadcrumbs.map((b, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: b.name,
+      item: b.url,
+    })),
+  });
+}
+const jsonLd = { "@context": "https://schema.org", "@graph": graph };
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -53,6 +81,7 @@ const orgSchema = {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="robots" content={robots} />
     <link rel="canonical" href={canonical} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -68,7 +97,7 @@ const orgSchema = {
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
     <meta name="theme-color" content="#0b0b0c" />
-    <script type="application/ld+json" set:html={JSON.stringify(orgSchema)} is:inline />
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} is:inline />
     <link rel="icon" href={favicon} />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
