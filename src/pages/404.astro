@@ -1,0 +1,16 @@
+---
+import Base from "../layouts/Base.astro";
+import PageShell from "../components/PageShell.astro";
+---
+<Base title="404 — Outbuild Lab" description="This page doesn't exist yet.">
+  <PageShell
+    label="404 — Not Found"
+    title={["Page", '<em class="stroke">not built.</em>']}
+    lede="This one doesn't exist (yet). Even an AI-native studio can't ship what hasn't been briefed — so let's point you at something real."
+  >
+    <div class="page-cta reveal">
+      <a href="/" class="btn-accent" data-hover>Back home ↗</a>
+      <a href="/lab" class="page-cta-alt" data-hover>Sketch an idea in the Lab</a>
+    </div>
+  </PageShell>
+</Base>
