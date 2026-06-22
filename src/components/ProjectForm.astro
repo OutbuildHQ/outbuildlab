@@ -1,20 +1,15 @@
 ---
-// Wired to Netlify Forms (form name: "contact"). Submissions are handled
-// by Netlify on the deployed site — set up notification emails in
-// Netlify → Forms → contact → Settings & notifications.
-// The submit is AJAX'd in app.js so the UX stays in-page.
+// Wired to Web3Forms (free). Submissions email straight to the address
+// configured for this access key in the Web3Forms dashboard. The access
+// key is public by design (safe to commit). Submit is AJAX'd in app.js.
+const WEB3FORMS_KEY = "395aa1ef-c9c1-4cb7-9b71-dfd618cdfcc8";
 ---
-<form
-  class="ob-form"
-  name="contact"
-  method="POST"
-  data-netlify="true"
-  netlify-honeypot="bot-field"
->
-  <input type="hidden" name="form-name" value="contact" />
-  <p class="ob-honeypot" hidden aria-hidden="true">
-    <label>Leave this empty: <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
-  </p>
+<form class="ob-form" method="POST" action="https://api.web3forms.com/submit">
+  <input type="hidden" name="access_key" value={WEB3FORMS_KEY} />
+  <input type="hidden" name="subject" value="New lead — outbuildlab.com" />
+  <input type="hidden" name="from_name" value="Outbuild Lab" />
+  <!-- honeypot: bots tick this; it's hidden from humans -->
+  <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none !important" />
   <div class="field">
     <label>Name</label>
     <input type="text" name="name" placeholder="Ada Lovelace" required />

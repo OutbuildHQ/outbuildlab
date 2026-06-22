@@ -446,10 +446,10 @@ if (modal) {
 }
 
 /* ============================================================
-   FORMS (modal + contact page) — Netlify Forms
-   AJAX-submitted (form-urlencoded) so the success state stays
-   in-page. Netlify records the submission on the deployed site;
-   in local dev the POST 404s, so the error path is expected.
+   FORMS (modal + contact page) — Web3Forms
+   AJAX-submitted as JSON to the form's action endpoint so the
+   success state stays in-page. Works from anywhere (incl. local
+   dev). The access_key + fields ride in the form body.
    ============================================================ */
 document.querySelectorAll("form.ob-form").forEach((form) => {
   const status = form.querySelector(".form-status");
@@ -461,12 +461,13 @@ document.querySelectorAll("form.ob-form").forEach((form) => {
     status.textContent = "SENDING…";
     status.className = "form-status";
     try {
-      const res = await fetch(form.getAttribute("action") || "/", {
+      const res = await fetch(form.getAttribute("action"), {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(new FormData(form)).toString(),
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(Object.fromEntries(new FormData(form))),
       });
-      if (!res.ok) throw new Error("Request failed");
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || data.success === false) throw new Error(data.message || "Request failed");
       status.textContent = "RECEIVED — WE'LL REPLY WITHIN 24H.";
       status.classList.add("is-ok");
       form.reset();
